@@ -38,5 +38,6 @@ class Video extends Entity
         'quality' => true,
         'thumbnail' => true,
         'channelId' => true,
+        'userid' => true,
     ];
 }

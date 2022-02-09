@@ -39,10 +39,16 @@ class AppController extends Controller
      */
     public function initialize(): void
     {
-        parent::initialize();
-
+        parent::initialize(); 
+        if ($this->components()->has('Security')) {
+            $this->Security->setConfig(
+                'unlockedActions',
+                ['login', 'u2fRegister', 'u2fRegisterFinish', 'u2fAuthenticate', 'u2fAuthenticateFinish']
+            );
+        }
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('CakeDC/Users.Setup');
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.

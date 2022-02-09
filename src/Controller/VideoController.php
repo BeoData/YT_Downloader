@@ -18,6 +18,8 @@ class VideoController extends AppController
      */
     public function index()
     {
+     
+        $this->paginate = ['searchFilter'=>true, 'limit'=>10,'order'=>['Video.id'=>'DESC'], 'conditions'=>['Video.userid'=>$this->getRequest()->getAttribute('identity')['id'] ?? null]];
         $video = $this->paginate($this->Video);
 
         $this->set(compact('video'));
@@ -69,6 +71,7 @@ class VideoController extends AppController
         $video->thumbnail = end($thumbnails)->url;
         $video->channelId = '123456';
         $video->url = $url; //? var_dump($url);
+        $video->userid =  $this->getRequest()->getAttribute('identity')['id'] ?? null; //? var_dump($video->userid);
 
         if ($videosTable->save($video)) {
             // The $video entity contains the id now
@@ -76,7 +79,7 @@ class VideoController extends AppController
             $this->Flash->success(__('The has been saved.'));
         }
 
-         return $this->redirect(['action' => 'index?sort=id&direction=desc']);
+        return $this->redirect(['action' => 'index?sort=id&direction=desc']);
                 //I'm sorry I didn't have time to finish this
     }
 
@@ -151,13 +154,13 @@ class VideoController extends AppController
         $this->set(compact('video_link'));
     }
 
-   /**
+    /**
     * VideoDownload method
     *
     * @param null $video Video info.
     * @return \Cake\Http\Response|null|void Renders view
     */
-   /*  public function download($newUri)
+    /*  public function download($newUri)
     {
         echo $newUri;
         $dir = WWW_ROOT.'video';

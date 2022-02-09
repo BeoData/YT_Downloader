@@ -98,6 +98,11 @@ class VideoTable extends Table
             ->maxLength('channelId', 50)
             ->requirePresence('channelId', 'create')
             ->notEmptyString('channelId');
+        $validator
+            ->scalar('userid')
+            ->maxLength('userid', 50)
+            ->requirePresence('userid', 'create')
+            ->notEmptyString('userid');
 
         return $validator;
     }

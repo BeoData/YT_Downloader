@@ -2,12 +2,18 @@
 error_reporting(1);
 $video_link = null;
 $thumbnails = $getData->videoDetails->thumbnail->thumbnails;
-$thumbnail = end($thumbnails)->url;
+
+
+var_dump($thumbnail);
 $title = $getData->videoDetails->title;
 $short_description = $getData->videoDetails->shortDescription;
 $formats = $getData->streamingData->formats;
 $frmt = "mp4";
 $videoId = $getData->videoDetails->videoId;
+if (isset($thumbnails)) {
+    $thumbnail = end($thumbnails)->url;
+}
+
 ?>
 
 <div class="row">

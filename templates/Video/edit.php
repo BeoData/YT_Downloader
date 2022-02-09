@@ -30,6 +30,7 @@
                     echo $this->Form->control('quality');
                     echo $this->Form->control('thumbnail');
                     echo $this->Form->control('channelId');
+                    echo $this->Form->control('userid');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
