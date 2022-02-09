@@ -177,6 +177,29 @@ class VideoController extends AppController
      * @param string|null $id Video id.
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     
+    public function edit($id = null)
+    {
+        $video = $this->Video->get($id, [
+            'contain' => [],
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $video = $this->Video->patchEntity($video, $this->request->getData());
+            if ($this->Video->save($video)) {
+                $this->Flash->success(__('The video has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The video could not be saved. Please, try again.'));
+        }
+        $this->set(compact('video'));
+    }*/
+    /**
+     * Edit method
+     *
+     * @param string|null $id Video id.
+     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function edit($id = null)
     {
@@ -194,7 +217,6 @@ class VideoController extends AppController
         }
         $this->set(compact('video'));
     }
-
     /**
      * Delete method
      *

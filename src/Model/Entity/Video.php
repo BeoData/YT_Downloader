@@ -17,6 +17,7 @@ use Cake\ORM\Entity;
  * @property string $quality
  * @property string $thumbnail
  * @property string $channelId
+ * @property string $userid
  */
 class Video extends Entity
 {

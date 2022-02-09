@@ -23,14 +23,20 @@
                 <legend><?= __('Edit Video') ?></legend>
                 <?php
                     echo $this->Form->control('title');
-                    echo $this->Form->control('short_desc');
-                    echo $this->Form->control('url');
-                    echo $this->Form->control('videoId');
-                    echo $this->Form->control('type');
-                    echo $this->Form->control('quality');
-                    echo $this->Form->control('thumbnail');
-                    echo $this->Form->control('channelId');
-                    echo $this->Form->control('userid');
+                    echo $this->Form->textarea('short_desc', ['rows' => '5', 'cols' => '15']);
+                    echo $this->Form->hidden('url', ['readonly' => true]);
+                    echo $this->Form->hidden('videoId', ['readonly' => true]);
+                    echo $this->Form->hidden('type', ['readonly' => true]);
+                    echo $this->Form->hidden('quality', ['readonly' => true]);
+                    echo $this->Form->hidden('thumbnail', ['readonly' => true]);
+                    echo $this->Form->hidden('channelId', ['readonly' => true]);
+                    echo $this->Form->hidden('userid', ['readonly' => true]);
+/*                     echo $this->Form->select('date of transfer', [
+                        'label' => 'Date of birth',
+                        'min' => date('Y') -100  ,
+                        'max' => date('Y')  ,
+                    ]); */
+                    
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

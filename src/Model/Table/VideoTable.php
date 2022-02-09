@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use Cake\ORM\Query;
+use Cake\ORM\RulesChecker;  
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
@@ -71,7 +73,7 @@ class VideoTable extends Table
 
         $validator
             ->scalar('videoId')
-            ->maxLength('videoId', 10)
+            ->maxLength('videoId', 100)
             ->requirePresence('videoId', 'create')
             ->notEmptyString('videoId');
 
