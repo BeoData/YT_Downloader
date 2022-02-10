@@ -1,3 +1,19 @@
+<style>
+.bg-info {
+background-color: #17a2b8 !important;
+}
+.thead {  
+font-size: 4.25em;
+line-height: 2rem;
+}
+.thingyext{
+color: #fff;
+}
+#video-link{
+    background-color: #fff;
+}
+</style>
+
 <?php
 error_reporting(1);
 $video_link = null;
@@ -18,12 +34,15 @@ if (isset($thumbnails)) {
 
 <div class="row">
     <div class="column-responsive column-100">
-        <div class="video form content">
+        <div class="thead">Download YouTube Videos</div>
+        <hr>
+        <div class="video form content bg-info">
             <?= $this->Form->create($video_link) ?>
             <fieldset>
+
             <?php  echo $this->Form->control('video_link', [
                 'label' => [
-                'class' => 'thingy',
+                'class' => 'thingy thingyext ',
                 'text' => 'YouTube Video Link']
 ]);?>
 
